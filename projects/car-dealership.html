@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Dealership Revenue Analysis — Case Study | Vo Duc Manh</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .case-study { padding: calc(var(--nav-height) + 4rem) 0 6rem; }
+        .case-study__back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-2); margin-bottom: 2rem; transition: color 0.2s; }
+        .case-study__back:hover { color: var(--accent-3); }
+        .case-study__hero { margin-bottom: 4rem; }
+        .case-study__meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+        .case-study__tag { font-size: 0.75rem; font-weight: 500; color: var(--accent-3); padding: 0.25rem 0.7rem; background: var(--accent-glow); border-radius: 100px; border: 1px solid rgba(99,102,241,0.12); }
+        .case-study__date { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-3); }
+        .case-study__title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; color: var(--text-0); margin-bottom: 1rem; }
+        .case-study__subtitle { font-size: 1.1rem; color: var(--text-2); max-width: 700px; line-height: 1.7; }
+        .case-study__body { max-width: 780px; }
+        .case-study__body h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; color: var(--text-0); margin: 3rem 0 1rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .case-study__body h2:first-of-type { border-top: none; padding-top: 0; }
+        .case-study__body p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 1rem; }
+        .case-study__body ul { list-style: none; padding: 0; margin: 1rem 0; }
+        .case-study__body li { font-size: 0.9rem; color: var(--text-2); padding: 0.4rem 0 0.4rem 1.5rem; position: relative; }
+        .case-study__body li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-1); }
+        .case-study__metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .case-study__metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; }
+        .case-study__metric-card strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; color: var(--text-0); font-weight: 700; }
+        .case-study__metric-card span { font-size: 0.75rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.5px; }
+        .case-study__tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 2rem 0; }
+        .case-study__tech span { font-size: 0.78rem; padding: 0.4rem 0.9rem; background: var(--bg-3); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-2); }
+        .case-study__nav { display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .case-study__nav a { font-size: 0.88rem; color: var(--accent-3); display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; }
+        .case-study__nav a:hover { gap: 0.7rem; }
+    </style>
+</head>
+<body>
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
+    <nav class="nav nav--scrolled">
+        <div class="nav__inner">
+            <a href="../index.html" class="nav__logo">
+                <span class="nav__logo-bracket">{</span>VDM<span class="nav__logo-bracket">}</span>
+            </a>
+            <div class="nav__links">
+                <a href="../index.html#projects" class="nav__link">Case Studies</a>
+                <a href="../index.html#blog" class="nav__link">Blog</a>
+                <a href="../index.html#contact" class="nav__link">Contact</a>
+            </div>
+            <div class="nav__actions">
+                <a href="../index.html#resume" class="nav__cta">Download CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="case-study">
+        <div class="container">
+            <a href="../index.html#projects" class="case-study__back">
+                <i class="fas fa-arrow-left"></i> Back to all projects
+            </a>
+
+            <div class="case-study__hero">
+                <div class="case-study__meta">
+                    <span class="case-study__tag">Business Intelligence</span>
+                    <span class="case-study__date">2022–2023</span>
+                </div>
+                <h1 class="case-study__title">Car Dealership Revenue Analysis</h1>
+                <p class="case-study__subtitle">
+                    Transforming $371M+ in sales data and 13,000+ transactions into an interactive
+                    Power BI dashboard that enables data-driven pricing and regional strategy decisions.
+                </p>
+            </div>
+
+            <div class="case-study__body">
+                <h2>The Challenge</h2>
+                <p>
+                    A multi-location car dealership network needed clarity on which pricing strategies
+                    actually drove revenue. Were high-volume discount models outperforming premium
+                    strategies? How did demand vary across regions? Without answers, capital allocation
+                    was based on intuition rather than evidence.
+                </p>
+
+                <div class="case-study__metrics">
+                    <div class="case-study__metric-card">
+                        <strong>$371M+</strong>
+                        <span>Total Revenue</span>
+                    </div>
+                    <div class="case-study__metric-card">
+                        <strong>13K+</strong>
+                        <span>Transactions</span>
+                    </div>
+                    <div class="case-study__metric-card">
+                        <strong>Multi</strong>
+                        <span>Regions</span>
+                    </div>
+                    <div class="case-study__metric-card">
+                        <strong>2</strong>
+                        <span>Strategy Types</span>
+                    </div>
+                </div>
+
+                <h2>Approach & Methodology</h2>
+                <ul>
+                    <li><strong>Data Modeling:</strong> Structured raw transactional data into a star schema optimized for analytical queries — separating fact tables (transactions) from dimension tables (products, locations, time).</li>
+                    <li><strong>SQL Preprocessing:</strong> Cleaned and transformed data, handling missing values and outliers. Created calculated fields for profit margins, seasonal indices, and moving averages.</li>
+                    <li><strong>Dashboard Architecture:</strong> Designed a multi-page Power BI report with executive summary, regional drill-down, pricing analysis, and trend views — each page answering specific business questions.</li>
+                    <li><strong>DAX Measures:</strong> Built complex calculated measures for YoY growth, rolling averages, market share by region, and dynamic pricing comparisons.</li>
+                    <li><strong>Strategy Segmentation:</strong> Classified dealerships into high-volume (competitive pricing, higher turnover) vs. premium (higher margin, lower volume) to compare performance.</li>
+                </ul>
+
+                <h2>Key Insights</h2>
+                <p>
+                    The analysis revealed that high-volume pricing strategies outperformed premium
+                    strategies in 3 of 5 regions, but premium strategies dominated in urban markets
+                    with higher average income. This geographic nuance was invisible in aggregate reporting.
+                </p>
+                <p>
+                    Demand-driven price fluctuations showed strong seasonal patterns — enabling predictive
+                    inventory management. The dashboard identified underperforming product-region combinations
+                    ripe for reallocation.
+                </p>
+
+                <h2>Technology Stack</h2>
+                <div class="case-study__tech">
+                    <span>SQL</span>
+                    <span>Power BI</span>
+                    <span>DAX</span>
+                    <span>Data Modeling</span>
+                    <span>Star Schema</span>
+                    <span>Power Query</span>
+                </div>
+
+                <div class="case-study__nav">
+                    <a href="fraud-detection.html"><i class="fas fa-arrow-left"></i> Previous: Fraud Detection</a>
+                    <a href="ai-job-market.html">Next: AI Job Market <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        (function(){
+            const cursor = document.getElementById('cursor');
+            let mx=0,my=0,cx=0,cy=0;
+            document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+            (function loop(){cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;if(cursor)cursor.style.transform=`translate3d(${cx}px,${cy}px,0)`;requestAnimationFrame(loop);})();
+            document.querySelectorAll('a,button').forEach(el=>{
+                el.addEventListener('mouseenter',()=>cursor?.classList.add('cursor--hover'),{passive:true});
+                el.addEventListener('mouseleave',()=>cursor?.classList.remove('cursor--hover'),{passive:true});
+            });
+        })();
+    </script>
+</body>
+</html>

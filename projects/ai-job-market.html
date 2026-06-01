@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global AI Job Market Analysis — Case Study | Vo Duc Manh</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .case-study { padding: calc(var(--nav-height) + 4rem) 0 6rem; }
+        .case-study__back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-2); margin-bottom: 2rem; transition: color 0.2s; }
+        .case-study__back:hover { color: var(--accent-3); }
+        .case-study__hero { margin-bottom: 4rem; }
+        .case-study__meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+        .case-study__tag { font-size: 0.75rem; font-weight: 500; color: var(--accent-3); padding: 0.25rem 0.7rem; background: var(--accent-glow); border-radius: 100px; border: 1px solid rgba(99,102,241,0.12); }
+        .case-study__date { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-3); }
+        .case-study__title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; color: var(--text-0); margin-bottom: 1rem; }
+        .case-study__subtitle { font-size: 1.1rem; color: var(--text-2); max-width: 700px; line-height: 1.7; }
+        .case-study__body { max-width: 780px; }
+        .case-study__body h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; color: var(--text-0); margin: 3rem 0 1rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .case-study__body h2:first-of-type { border-top: none; padding-top: 0; }
+        .case-study__body p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 1rem; }
+        .case-study__body ul { list-style: none; padding: 0; margin: 1rem 0; }
+        .case-study__body li { font-size: 0.9rem; color: var(--text-2); padding: 0.4rem 0 0.4rem 1.5rem; position: relative; }
+        .case-study__body li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-1); }
+        .case-study__metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .case-study__metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; }
+        .case-study__metric-card strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; color: var(--text-0); font-weight: 700; }
+        .case-study__metric-card span { font-size: 0.75rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.5px; }
+        .case-study__tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 2rem 0; }
+        .case-study__tech span { font-size: 0.78rem; padding: 0.4rem 0.9rem; background: var(--bg-3); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-2); }
+        .case-study__nav { display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .case-study__nav a { font-size: 0.88rem; color: var(--accent-3); display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; }
+        .case-study__nav a:hover { gap: 0.7rem; }
+    </style>
+</head>
+<body>
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
+    <nav class="nav nav--scrolled">
+        <div class="nav__inner">
+            <a href="../index.html" class="nav__logo">
+                <span class="nav__logo-bracket">{</span>VDM<span class="nav__logo-bracket">}</span>
+            </a>
+            <div class="nav__links">
+                <a href="../index.html#projects" class="nav__link">Case Studies</a>
+                <a href="../index.html#blog" class="nav__link">Blog</a>
+                <a href="../index.html#contact" class="nav__link">Contact</a>
+            </div>
+            <div class="nav__actions">
+                <a href="../index.html#resume" class="nav__cta">Download CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="case-study">
+        <div class="container">
+            <a href="../index.html#projects" class="case-study__back">
+                <i class="fas fa-arrow-left"></i> Back to all projects
+            </a>
+
+            <div class="case-study__hero">
+                <div class="case-study__meta">
+                    <span class="case-study__tag">Market Research</span>
+                    <span class="case-study__date">2025</span>
+                </div>
+                <h1 class="case-study__title">Global AI Job Market & Salary Trends</h1>
+                <p class="case-study__subtitle">
+                    Analyzing ~15,000 AI job records to uncover salary trends, skill demand patterns,
+                    and cross-industry adoption — revealing where AI hiring is actually growing beyond tech.
+                </p>
+            </div>
+
+            <div class="case-study__body">
+                <h2>The Challenge</h2>
+                <p>
+                    The AI job market is one of the fastest-evolving labor markets globally, yet data
+                    is fragmented across platforms and geographies. Job seekers lack clarity on which
+                    skills command premium salaries, and companies struggle to benchmark compensation.
+                    Beyond tech giants, which industries are genuinely adopting AI talent?
+                </p>
+
+                <div class="case-study__metrics">
+                    <div class="case-study__metric-card">
+                        <strong>~15K</strong>
+                        <span>Job Records</span>
+                    </div>
+                    <div class="case-study__metric-card">
+                        <strong>Multi</strong>
+                        <span>Industries</span>
+                    </div>
+                    <div class="case-study__metric-card">
+                        <strong>Global</strong>
+                        <span>Geography</span>
+                    </div>
+                    <div class="case-study__metric-card">
+                        <strong>5+</strong>
+                        <span>Dimensions</span>
+                    </div>
+                </div>
+
+                <h2>Approach & Methodology</h2>
+                <ul>
+                    <li><strong>Data Collection & Cleaning:</strong> Worked with a real-world dataset of ~15,000 AI job postings. Standardized job titles, skill taxonomies, and salary formats across different markets.</li>
+                    <li><strong>Multi-Dimensional Modeling:</strong> Built analysis across 5 key dimensions — skills required, geography, company size, job type (full-time/contract/remote), and industry sector.</li>
+                    <li><strong>Cross-Industry Analysis:</strong> Deliberately looked beyond traditional tech companies to identify AI adoption patterns in Retail, Media, Automotive, Healthcare, and Financial sectors.</li>
+                    <li><strong>Salary Benchmarking:</strong> Created normalized salary comparisons controlling for geography, experience level, and company size to identify truly high-value skills vs. location premiums.</li>
+                    <li><strong>Interactive Dashboard:</strong> Built a Power BI solution allowing users to slice data by any combination of dimensions for personalized insights.</li>
+                </ul>
+
+                <h2>Key Insights</h2>
+                <p>
+                    The most surprising finding: AI hiring growth rate in Retail and Automotive sectors
+                    now outpaces traditional tech companies. These industries are in the early adoption
+                    phase, creating opportunities for data professionals to enter less competitive markets
+                    with strong growth trajectories.
+                </p>
+                <p>
+                    Skill-wise, the combination of domain expertise + ML fundamentals commands higher
+                    salaries than pure ML engineering in many contexts. Companies are paying a premium
+                    for people who can bridge the gap between data science and business strategy.
+                </p>
+                <p>
+                    Geographically, remote-first AI roles have compressed salary bands — creating
+                    arbitrage opportunities for talent in lower cost-of-living areas with strong skills.
+                </p>
+
+                <h2>Technology Stack</h2>
+                <div class="case-study__tech">
+                    <span>SQL</span>
+                    <span>Power BI</span>
+                    <span>DAX</span>
+                    <span>Power Query</span>
+                    <span>Data Storytelling</span>
+                    <span>Market Analysis</span>
+                </div>
+
+                <div class="case-study__nav">
+                    <a href="car-dealership.html"><i class="fas fa-arrow-left"></i> Previous: Car Dealership</a>
+                    <a href="../index.html#projects">All Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        (function(){
+            const cursor = document.getElementById('cursor');
+            let mx=0,my=0,cx=0,cy=0;
+            document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+            (function loop(){cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;if(cursor)cursor.style.transform=`translate3d(${cx}px,${cy}px,0)`;requestAnimationFrame(loop);})();
+            document.querySelectorAll('a,button').forEach(el=>{
+                el.addEventListener('mouseenter',()=>cursor?.classList.add('cursor--hover'),{passive:true});
+                el.addEventListener('mouseleave',()=>cursor?.classList.remove('cursor--hover'),{passive:true});
+            });
+        })();
+    </script>
+</body>
+</html>

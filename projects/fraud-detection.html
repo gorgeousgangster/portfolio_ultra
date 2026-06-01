@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection — Case Study | Vo Duc Manh</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .case-study { padding: calc(var(--nav-height) + 4rem) 0 6rem; }
+        .case-study__back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-2); margin-bottom: 2rem; transition: color 0.2s; }
+        .case-study__back:hover { color: var(--accent-3); }
+        .case-study__hero { margin-bottom: 4rem; }
+        .case-study__meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+        .case-study__tag { font-size: 0.75rem; font-weight: 500; color: var(--accent-3); padding: 0.25rem 0.7rem; background: var(--accent-glow); border-radius: 100px; border: 1px solid rgba(99,102,241,0.12); }
+        .case-study__date { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-3); }
+        .case-study__title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -1px; color: var(--text-0); margin-bottom: 1rem; }
+        .case-study__subtitle { font-size: 1.1rem; color: var(--text-2); max-width: 700px; line-height: 1.7; }
+        .case-study__body { max-width: 780px; }
+        .case-study__body h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; color: var(--text-0); margin: 3rem 0 1rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .case-study__body h2:first-of-type { border-top: none; padding-top: 0; }
+        .case-study__body p { font-size: 0.95rem; color: var(--text-2); line-height: 1.8; margin-bottom: 1rem; }
+        .case-study__body ul { list-style: none; padding: 0; margin: 1rem 0; }
+        .case-study__body li { font-size: 0.9rem; color: var(--text-2); padding: 0.4rem 0 0.4rem 1.5rem; position: relative; }
+        .case-study__body li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-1); }
+        .case-study__metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .case-study__metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; }
+        .case-study__metric-card strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; color: var(--text-0); font-weight: 700; }
+        .case-study__metric-card span { font-size: 0.75rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.5px; }
+        .case-study__tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 2rem 0; }
+        .case-study__tech span { font-size: 0.78rem; padding: 0.4rem 0.9rem; background: var(--bg-3); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-2); }
+        .case-study__nav { display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .case-study__nav a { font-size: 0.88rem; color: var(--accent-3); display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; }
+        .case-study__nav a:hover { gap: 0.7rem; }
+    </style>
+</head>
+<body>
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+    </div>
+    <nav class="nav nav--scrolled">
+        <div class="nav__inner">
+            <a href="../index.html" class="nav__logo">
+                <span class="nav__logo-bracket">{</span>VDM<span class="nav__logo-bracket">}</span>
+            </a>
+            <div class="nav__links">
+                <a href="../index.html#projects" class="nav__link">Case Studies</a>
+                <a href="../index.html#blog" class="nav__link">Blog</a>
+                <a href="../index.html#contact" class="nav__link">Contact</a>
+            </div>
+            <div class="nav__actions">
+                <a href="../index.html#resume" class="nav__cta">Download CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="case-study">
+        <div class="container">
+            <a href="../index.html#projects" class="case-study__back">
+                <i class="fas fa-arrow-left"></i> Back to all projects
+            </a>
+
+            <div class="case-study__hero">
+                <div class="case-study__meta">
+                    <span class="case-study__tag">Machine Learning</span>
+                    <span class="case-study__date">2023</span>
+                </div>
+                <h1 class="case-study__title">Credit Card Fraud Detection & Prediction</h1>
+                <p class="case-study__subtitle">
+                    Building an ensemble ML pipeline to detect fraudulent transactions in highly
+                    imbalanced financial data — achieving optimal precision-recall balance through
+                    threshold optimization.
+                </p>
+            </div>
+
+            <div class="case-study__body">
+                <h2>The Challenge</h2>
+                <p>
+                    Credit card fraud is rare (typically less than 1% of all transactions) but enormously
+                    costly. Traditional rule-based systems miss sophisticated fraud patterns. The challenge
+                    was to build a model that catches fraud without drowning legitimate transactions in
+                    false positives.
+                </p>
+                <p>
+                    The dataset exhibited severe class imbalance — a naive classifier achieving 99.8% accuracy
+                    by simply predicting "not fraud" for everything. Standard metrics are useless here; the
+                    real challenge is in the margins.
+                </p>
+
+                <div class="case-study__metrics">
+                    <div class="case-study__metric-card">
+                        <strong>&lt;1%</strong>
+                        <span>Fraud Rate</span>
+                    </div>
+                    <div class="case-study__metric-card">
+                        <strong>284K+</strong>
+                        <span>Transactions</span>
+                    </div>
+                    <div class="case-study__metric-card">
+                        <strong>94%</strong>
+                        <span>Precision</span>
+                    </div>
+                    <div class="case-study__metric-card">
+                        <strong>87%</strong>
+                        <span>Recall</span>
+                    </div>
+                </div>
+
+                <h2>Approach & Methodology</h2>
+                <p>
+                    I tackled this in three phases: data understanding, rebalancing strategy, and model ensemble.
+                </p>
+                <ul>
+                    <li><strong>Exploratory Analysis:</strong> Identified temporal patterns — fraud peaks at specific hours. Found that fraudulent transactions have distinct amount distributions.</li>
+                    <li><strong>SMOTE Oversampling:</strong> Generated synthetic fraud samples to address class imbalance without losing information from undersampling.</li>
+                    <li><strong>Isolation Forest:</strong> Deployed as an unsupervised anomaly detector for initial flagging of suspicious patterns.</li>
+                    <li><strong>Ensemble Model:</strong> Combined Logistic Regression (interpretability) + Random Forest (non-linear patterns) + Gradient Boosting (residual learning) with soft voting.</li>
+                    <li><strong>Threshold Optimization:</strong> Instead of default 0.5 cutoff, swept thresholds to find the optimal precision-recall tradeoff for the business context.</li>
+                </ul>
+
+                <h2>Key Insights</h2>
+                <p>
+                    The most valuable finding was that fraud detection isn't just a modeling problem — it's
+                    a decision problem. The "best" model depends on the cost ratio between false positives
+                    (blocking legitimate customers) and false negatives (missing fraud).
+                </p>
+                <p>
+                    By presenting results across multiple thresholds rather than a single "accuracy" number,
+                    stakeholders can make informed business decisions about their risk tolerance.
+                </p>
+
+                <h2>Technology Stack</h2>
+                <div class="case-study__tech">
+                    <span>Python</span>
+                    <span>scikit-learn</span>
+                    <span>SMOTE (imbalanced-learn)</span>
+                    <span>Isolation Forest</span>
+                    <span>Logistic Regression</span>
+                    <span>Random Forest</span>
+                    <span>Gradient Boosting</span>
+                    <span>matplotlib</span>
+                    <span>seaborn</span>
+                </div>
+
+                <div class="case-study__nav">
+                    <a href="../index.html#projects"><i class="fas fa-arrow-left"></i> All Projects</a>
+                    <a href="car-dealership.html">Next: Car Dealership Analysis <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        (function(){
+            const cursor = document.getElementById('cursor');
+            let mx=0,my=0,cx=0,cy=0;
+            document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+            (function loop(){cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;if(cursor)cursor.style.transform=`translate3d(${cx}px,${cy}px,0)`;requestAnimationFrame(loop);})();
+            document.querySelectorAll('a,button').forEach(el=>{
+                el.addEventListener('mouseenter',()=>cursor?.classList.add('cursor--hover'),{passive:true});
+                el.addEventListener('mouseleave',()=>cursor?.classList.remove('cursor--hover'),{passive:true});
+            });
+        })();
+    </script>
+</body>
+</html>
