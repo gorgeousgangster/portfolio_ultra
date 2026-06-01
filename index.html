@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vo Duc Manh — Data Analyst</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Stars background -->
+    <canvas id="starsCanvas"></canvas>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader__inner">
+            <div class="preloader__logo">{VDM}</div>
+            <div class="preloader__bar"><div class="preloader__fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Section navigation dots -->
+    <nav class="section-dots" id="sectionDots">
+        <a href="#hero" class="section-dots__dot active" data-section="hero"></a>
+        <a href="#about" class="section-dots__dot" data-section="about"></a>
+        <a href="#journey" class="section-dots__dot" data-section="journey"></a>
+        <a href="#projects" class="section-dots__dot" data-section="projects"></a>
+        <a href="#skills" class="section-dots__dot" data-section="skills"></a>
+        <a href="#blog" class="section-dots__dot" data-section="blog"></a>
+        <a href="#contact" class="section-dots__dot" data-section="contact"></a>
+    </nav>
+
+    <!-- Cursor system -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor" id="cursor">
+        <div class="cursor__dot"></div>
+        <div class="cursor__ring"></div>
+        <span class="cursor__label" id="cursorLabel"></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#" class="nav__logo">
+                <span class="nav__logo-bracket">{</span>Vo Duc Manh<span class="nav__logo-bracket">}</span>
+            </a>
+            <div class="nav__links" id="navLinks">
+                <a href="#about" class="nav__link" data-section="about" data-i18n="nav.about">About</a>
+                <a href="#journey" class="nav__link" data-section="journey" data-i18n="nav.journey">Journey</a>
+                <a href="#projects" class="nav__link" data-section="projects" data-i18n="nav.projects">Case Studies</a>
+                <a href="#skills" class="nav__link" data-section="skills" data-i18n="nav.skills">Skills</a>
+                <a href="#blog" class="nav__link" data-section="blog" data-i18n="nav.blog">Blog</a>
+                <a href="#contact" class="nav__link" data-section="contact" data-i18n="nav.contact">Contact</a>
+            </div>
+            <div class="nav__actions">
+                <div class="music-control" id="musicControl">
+                    <button class="music-toggle" id="musicToggle" aria-label="Toggle music">
+                        <i class="fas fa-volume-xmark music-toggle__icon music-toggle__icon--off"></i>
+                        <i class="fas fa-volume-high music-toggle__icon music-toggle__icon--on"></i>
+                    </button>
+                    <div class="music-control__slider">
+                        <input type="range" id="musicVolume" min="0" max="100" value="70" class="music-volume">
+                    </div>
+                </div>
+                <div class="lang-switch" id="langSwitch">
+                    <button class="lang-switch__btn" data-lang="vi">VI</button>
+                    <button class="lang-switch__btn active" data-lang="en">EN</button>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun theme-toggle__icon theme-toggle__icon--light"></i>
+                    <i class="fas fa-moon theme-toggle__icon theme-toggle__icon--dark"></i>
+                </button>
+                <a href="#resume" class="nav__cta" data-i18n="nav.cv">Download CV</a>
+                <button class="nav__menu-btn" id="menuBtn" aria-label="Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path class="menu-line menu-line--top" d="M4 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path class="menu-line menu-line--mid" d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path class="menu-line menu-line--bot" d="M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero__grid-bg"></div>
+        <div class="hero__particles" id="particles"></div>
+        <div class="hero__content">
+            <div class="hero__badge">
+                <span class="hero__badge-dot"></span>
+                <span data-i18n="hero.badge">Available for opportunities</span>
+            </div>
+            <h1 class="hero__title hero__title-line">
+                I transform
+                <span class="hero__title-line--accent"><span class="hero__title-word" id="rotatingWord">raw data</span></span>
+                into business impact.
+            </h1>
+            <p class="hero__subtitle" data-i18n="hero.subtitle">
+                Data Analyst & ML Engineer building predictive models and interactive dashboards
+                that drive real decisions. Based in Hanoi, Vietnam.
+            </p>
+            <div class="hero__metrics">
+                <div class="hero__metric">
+                    <span class="hero__metric-value" data-count="3">0</span>
+                    <span class="hero__metric-label" data-i18n="hero.metric1">Projects Shipped</span>
+                </div>
+                <div class="hero__metric">
+                    <span class="hero__metric-value" data-count="371" data-suffix="M+">0</span>
+                    <span class="hero__metric-label" data-i18n="hero.metric2">$ Data Analyzed</span>
+                </div>
+                <div class="hero__metric">
+                    <span class="hero__metric-value" data-count="15" data-suffix="K+">0</span>
+                    <span class="hero__metric-label" data-i18n="hero.metric3">Records Processed</span>
+                </div>
+            </div>
+            <div class="hero__socials">
+                <a href="mailto:vomanh6a@gmail.com" aria-label="Email" data-tooltip="vomanh6a@gmail.com" data-cursor="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/v%C3%B5-m%E1%BA%A1nh-981369360/" target="_blank" aria-label="LinkedIn" data-tooltip="LinkedIn" data-cursor="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/gorgeousgangster" target="_blank" aria-label="GitHub" data-tooltip="GitHub" data-cursor="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/_098.majnh/" target="_blank" aria-label="Instagram" data-tooltip="Instagram" data-cursor="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/v0.cong.tu/" target="_blank" aria-label="Facebook" data-tooltip="Facebook" data-cursor="Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+            <div class="hero__scroll-indicator">
+                <div class="hero__scroll-line"></div>
+                <span data-i18n="hero.scroll">Scroll to explore</span>
+            </div>
+        </div>
+        <div class="hero__visual">
+            <canvas id="heroCanvas"></canvas>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag" data-i18n="about.tag">01 / About</span>
+                <h2 class="section-header__title" data-i18n="about.title" data-i18n-html="1">The intersection of<br><em>economics</em> & <em>technology</em></h2>
+            </div>
+            <div class="about__layout">
+                <div class="photo-stack" id="photoStack">
+                    <div class="photo-stack__card" data-index="0">
+                        <img src="assets/images/portrait.webp" alt="Portrait" loading="lazy" decoding="async" width="260" height="340">
+                    </div>
+                    <div class="photo-stack__card" data-index="1">
+                        <img src="assets/images/beach.webp" alt="Beach" loading="lazy" decoding="async" width="260" height="340">
+                    </div>
+                    <div class="photo-stack__card" data-index="2">
+                        <img src="assets/images/group-suits.webp" alt="Group" loading="lazy" decoding="async" width="260" height="340">
+                    </div>
+                </div>
+                <div class="about__narrative">
+                    <p class="about__lead" data-i18n="about.lead">
+                        I don't just analyze numbers — I uncover the stories they tell and translate
+                        them into strategic decisions.
+                    </p>
+                    <p data-i18n="about.p1" data-i18n-html="1">
+                        With a foundation in <strong>Computer Science</strong> from Vinh Gifted High School
+                        (GPA 9.3/10) and currently studying <strong>International Economics</strong> at
+                        Foreign Trade University, I bring a rare blend of technical depth and business acumen.
+                    </p>
+                    <p data-i18n="about.p2">
+                        My approach combines rigorous statistical methods with clear visual storytelling —
+                        because insights that can't be communicated are insights wasted.
+                    </p>
+                </div>
+                <div class="about__stats">
+                    <div class="stat-card" data-delay="0">
+                        <div class="stat-card__icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="stat-card__content">
+                            <h4>Foreign Trade University</h4>
+                            <p>International Economics</p>
+                            <span class="stat-card__meta">2024 — Present</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-delay="100">
+                        <div class="stat-card__icon"><i class="fas fa-code"></i></div>
+                        <div class="stat-card__content">
+                            <h4>CS Provincial Team</h4>
+                            <p>Vinh Gifted High School</p>
+                            <span class="stat-card__meta">GPA 9.3/10</span>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-delay="200">
+                        <div class="stat-card__icon"><i class="fas fa-language"></i></div>
+                        <div class="stat-card__content">
+                            <h4>IELTS 7.0</h4>
+                            <p>Proficient English Communication</p>
+                            <span class="stat-card__meta">Certified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section class="journey" id="journey">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag" data-i18n="journey.tag">02 / Journey</span>
+                <h2 class="section-header__title" data-i18n="journey.title" data-i18n-html="1">A timeline of<br><em>growth</em> & <em>milestones</em></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline__line">
+                    <div class="timeline__progress" id="timelineProgress"></div>
+                </div>
+                <div class="timeline__items">
+                    <div class="timeline__item" data-year="2021">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">Aug 2021</span>
+                            <h3>Entered Vinh Gifted High School</h3>
+                            <p>Specialized in Computer Science. Began competitive programming in C++ and built the algorithmic foundation for everything that followed.</p>
+                            <div class="timeline__tags">
+                                <span>C++</span><span>Algorithms</span><span>Competitive Programming</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline__item" data-year="2023">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">2023</span>
+                            <h3>Provincial CS Team & First ML Project</h3>
+                            <p>Selected for Provincial Computer Science team. Built first ML pipeline — a credit card fraud detection system using ensemble methods.</p>
+                            <div class="timeline__tags">
+                                <span>Machine Learning</span><span>Python</span><span>scikit-learn</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline__item" data-year="2024">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">Aug 2024</span>
+                            <h3>Foreign Trade University</h3>
+                            <p>Started International Economics at FTU. Combined economic thinking with data science to analyze markets and business performance.</p>
+                            <div class="timeline__tags">
+                                <span>Economics</span><span>Power BI</span><span>SQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline__item" data-year="2024">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">2024</span>
+                            <h3>WorldQuant & MindX Certifications</h3>
+                            <p>Completed the Quant Finance Explorer Program and multiple MindX data science tracks — BI, predictive modeling, and automated EDA.</p>
+                            <div class="timeline__tags">
+                                <span>WorldQuant</span><span>Quant Finance</span><span>BI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline__item" data-year="2025">
+                        <div class="timeline__dot"></div>
+                        <div class="timeline__card">
+                            <span class="timeline__date">2025</span>
+                            <h3>AI Job Market Analysis</h3>
+                            <p>Analyzed 15,000+ records of global AI hiring data. Identified cross-industry adoption patterns across Retail, Media, and Automotive.</p>
+                            <div class="timeline__tags">
+                                <span>Market Analysis</span><span>Power BI</span><span>Data Storytelling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies / Projects -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag" data-i18n="projects.tag">03 / Case Studies</span>
+                <h2 class="section-header__title" data-i18n="projects.title" data-i18n-html="1">Deep dives into<br><em>real</em> problems solved</h2>
+            </div>
+            <div class="cases">
+                <!-- Case 1 -->
+                <article class="case" data-case="fraud">
+                    <div class="case__visual">
+                        <div class="case__chart" id="fraudChart">
+                            <div class="case__chart-bars">
+                                <div class="chart-bar" style="--height: 85%; --delay: 0s;" data-label="Precision" data-value="94%"></div>
+                                <div class="chart-bar" style="--height: 72%; --delay: 0.1s;" data-label="Recall" data-value="87%"></div>
+                                <div class="chart-bar" style="--height: 78%; --delay: 0.2s;" data-label="F1" data-value="90%"></div>
+                                <div class="chart-bar" style="--height: 92%; --delay: 0.3s;" data-label="AUC" data-value="96%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case__content">
+                        <div class="case__meta">
+                            <span class="case__category">Machine Learning</span>
+                            <span class="case__year">2023</span>
+                        </div>
+                        <h3 class="case__title">Credit Card Fraud Detection & Prediction</h3>
+                        <div class="case__description">
+                            <p><strong>Problem:</strong> Identify fraudulent transactions from highly imbalanced data where fraud cases represent less than 1% of all transactions.</p>
+                            <p><strong>Approach:</strong> Applied SMOTE for rebalancing, Isolation Forest for anomaly detection, and built an ensemble (Logistic Regression + Random Forest + Gradient Boosting) with threshold optimization.</p>
+                            <p><strong>Impact:</strong> Achieved optimal precision-recall balance, enabling detection of fraud patterns in time and transaction amount distributions.</p>
+                        </div>
+                        <div class="case__stack">
+                            <span>Python</span><span>scikit-learn</span><span>SMOTE</span><span>Isolation Forest</span><span>Ensemble Methods</span>
+                        </div>
+                        <a href="projects/fraud-detection.html" class="case__link">
+                            View full case study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Case 2 -->
+                <article class="case case--reversed" data-case="car">
+                    <div class="case__visual">
+                        <div class="case__chart" id="carChart">
+                            <div class="case__donut">
+                                <svg viewBox="0 0 200 200" class="donut-svg">
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#1a1a2e" stroke-width="20"/>
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#6366f1" stroke-width="20"
+                                        stroke-dasharray="502" stroke-dashoffset="502" class="donut-segment" data-target="125"/>
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#8b5cf6" stroke-width="20"
+                                        stroke-dasharray="502" stroke-dashoffset="502" class="donut-segment" data-target="251"/>
+                                    <circle cx="100" cy="100" r="80" fill="none" stroke="#a78bfa" stroke-width="20"
+                                        stroke-dasharray="502" stroke-dashoffset="502" class="donut-segment" data-target="377"/>
+                                </svg>
+                                <div class="donut-center">
+                                    <span class="donut-value">$371M</span>
+                                    <span class="donut-label">Revenue</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case__content">
+                        <div class="case__meta">
+                            <span class="case__category">Business Intelligence</span>
+                            <span class="case__year">2022–2023</span>
+                        </div>
+                        <h3 class="case__title">Car Dealership Revenue Analysis</h3>
+                        <div class="case__description">
+                            <p><strong>Problem:</strong> A $371M dealership network needed to understand which pricing strategies drove revenue and how demand varied across regions.</p>
+                            <p><strong>Approach:</strong> Built an interactive Power BI dashboard covering 13,000+ transactions. Segmented performance by high-volume vs. premium pricing strategies.</p>
+                            <p><strong>Impact:</strong> Enabled data-driven decisions on pricing strategy, product mix optimization, and regional resource allocation.</p>
+                        </div>
+                        <div class="case__stack">
+                            <span>SQL</span><span>Power BI</span><span>DAX</span><span>Data Modeling</span>
+                        </div>
+                        <a href="projects/car-dealership.html" class="case__link">
+                            View full case study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Case 3 -->
+                <article class="case" data-case="ai-market">
+                    <div class="case__visual">
+                        <div class="case__chart" id="aiChart">
+                            <div class="case__line-chart">
+                                <svg viewBox="0 0 300 150" class="line-svg" preserveAspectRatio="none">
+                                    <polyline class="line-chart__grid" points="0,37 300,37" />
+                                    <polyline class="line-chart__grid" points="0,75 300,75" />
+                                    <polyline class="line-chart__grid" points="0,112 300,112" />
+                                    <polyline class="line-chart__line" points="0,130 40,110 80,95 120,80 160,55 200,40 240,25 280,15 300,10" />
+                                    <polyline class="line-chart__line line-chart__line--secondary" points="0,140 40,135 80,125 120,110 160,90 200,85 240,75 280,70 300,65" />
+                                </svg>
+                                <div class="line-chart__labels">
+                                    <span>Tech</span>
+                                    <span>Retail</span>
+                                    <span>Media</span>
+                                    <span>Auto</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case__content">
+                        <div class="case__meta">
+                            <span class="case__category">Market Research</span>
+                            <span class="case__year">2025</span>
+                        </div>
+                        <h3 class="case__title">Global AI Job Market & Salary Trends</h3>
+                        <div class="case__description">
+                            <p><strong>Problem:</strong> AI hiring data is fragmented. Job seekers and companies lack a unified view of salary benchmarks, skill demand, and cross-industry trends.</p>
+                            <p><strong>Approach:</strong> Analyzed ~15,000 records across geography, company size, job type, and required skills. Built multi-dimensional Power BI dashboard.</p>
+                            <p><strong>Impact:</strong> Revealed AI adoption extending beyond tech into Retail, Media, and Automotive. Identified key market demand drivers for career planning.</p>
+                        </div>
+                        <div class="case__stack">
+                            <span>SQL</span><span>Power BI</span><span>Market Analysis</span><span>Data Storytelling</span>
+                        </div>
+                        <a href="projects/ai-job-market.html" class="case__link">
+                            View full case study <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag" data-i18n="skills.tag">04 / Skills</span>
+                <h2 class="section-header__title" data-i18n="skills.title" data-i18n-html="1">Tools & technologies<br>I <em>work with</em></h2>
+            </div>
+            <div class="skills__radar">
+                <div class="skills__chart">
+                    <canvas id="skillsRadar" width="400" height="400"></canvas>
+                </div>
+                <div class="skills__list">
+                    <div class="skill-group">
+                        <h4 class="skill-group__title">
+                            <span class="skill-group__indicator" style="--color: #6366f1"></span>
+                            Programming
+                        </h4>
+                        <div class="skill-group__items">
+                            <div class="skill-item">
+                                <span class="skill-item__name">Python</span>
+                                <div class="skill-item__bar"><div class="skill-item__fill" data-width="90"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-item__name">SQL</span>
+                                <div class="skill-item__bar"><div class="skill-item__fill" data-width="85"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-item__name">C++</span>
+                                <div class="skill-item__bar"><div class="skill-item__fill" data-width="75"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-item__name">NoSQL</span>
+                                <div class="skill-item__bar"><div class="skill-item__fill" data-width="60"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4 class="skill-group__title">
+                            <span class="skill-group__indicator" style="--color: #8b5cf6"></span>
+                            Data & ML
+                        </h4>
+                        <div class="skill-group__items">
+                            <div class="skill-item">
+                                <span class="skill-item__name">Power BI</span>
+                                <div class="skill-item__bar"><div class="skill-item__fill" data-width="92"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-item__name">pandas / numpy</span>
+                                <div class="skill-item__bar"><div class="skill-item__fill" data-width="88"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-item__name">scikit-learn</span>
+                                <div class="skill-item__bar"><div class="skill-item__fill" data-width="80"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-item__name">Visualization</span>
+                                <div class="skill-item__bar"><div class="skill-item__fill" data-width="85"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag" data-i18n="blog.tag">05 / Blog</span>
+                <h2 class="section-header__title" data-i18n="blog.title" data-i18n-html="1">Insights from<br><em>real</em> projects</h2>
+            </div>
+            <div class="blog__grid">
+                <article class="blog-card blog-card--featured" data-article="car-sales">
+                    <div class="blog-card__image">
+                        <div class="blog-card__placeholder">
+                            <i class="fas fa-car"></i>
+                        </div>
+                    </div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta">
+                            <span class="blog-card__tag">Business Intelligence</span>
+                            <span class="blog-card__date">2023</span>
+                        </div>
+                        <h3>YOY Sales Growth: How Data Revealed Hidden Pricing Strategies</h3>
+                        <p>Tracking YTD vs PTYD metrics across body styles, colors, and dealer regions uncovered why some dealerships outperform others by 3x.</p>
+                        <button class="blog-card__link" onclick="openArticle('car-sales')">Read full insights <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </article>
+                <article class="blog-card" data-article="ai-market">
+                    <div class="blog-card__image">
+                        <div class="blog-card__placeholder">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta">
+                            <span class="blog-card__tag">Market Research</span>
+                            <span class="blog-card__date">2025</span>
+                        </div>
+                        <h3>AI Hiring Beyond Tech: Retail & Automotive Lead Growth</h3>
+                        <p>15K job records reveal remote work dominance, skills ROI, and which industries are quietly building AI teams.</p>
+                        <button class="blog-card__link" onclick="openArticle('ai-market')">Read full insights <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </article>
+                <article class="blog-card" data-article="fraud">
+                    <div class="blog-card__image">
+                        <div class="blog-card__placeholder">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta">
+                            <span class="blog-card__tag">Machine Learning</span>
+                            <span class="blog-card__date">2023</span>
+                        </div>
+                        <h3>Why 99.8% Accuracy Means Nothing in Fraud Detection</h3>
+                        <p>Imbalanced data breaks every assumption. Here's how SMOTE + Ensemble methods found the 0.17% that matters.</p>
+                        <button class="blog-card__link" onclick="openArticle('fraud')">Read full insights <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Modal -->
+    <div class="article-modal" id="articleModal">
+        <div class="article-modal__backdrop" onclick="closeArticle()"></div>
+        <div class="article-modal__container">
+            <button class="article-modal__close" onclick="closeArticle()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="article-modal__content" id="articleContent"></div>
+        </div>
+    </div>
+
+    <!-- Article Templates (hidden) -->
+    <template id="tmpl-car-sales">
+        <div class="article">
+            <div class="article__header">
+                <span class="article__tag">Business Intelligence</span>
+                <h1>YOY Sales Growth: How Data Revealed Hidden Pricing Strategies</h1>
+                <p class="article__meta">Car Dealership Revenue Analysis &bull; Power BI &bull; 2022–2023</p>
+            </div>
+            <div class="article__body">
+                <h2>Overview</h2>
+                <p>This project built a dynamic, interactive Power BI dashboard to track and analyze car dealership sales performance across 2022–2023, enabling data-driven decision-making at every level of the organization.</p>
+
+                <div class="article__metrics">
+                    <div class="article__metric"><strong>$371M+</strong><span>Total Revenue</span></div>
+                    <div class="article__metric"><strong>13K+</strong><span>Transactions</span></div>
+                    <div class="article__metric"><strong>YOY</strong><span>Growth Tracked</span></div>
+                    <div class="article__metric"><strong>Multi</strong><span>Regions</span></div>
+                </div>
+
+                <h2>Key Metrics Tracked</h2>
+                <ul>
+                    <li><strong>YTD Total Sales vs PTYD:</strong> Year-to-date revenue compared against previous year to measure real growth, not just seasonal spikes</li>
+                    <li><strong>MTD Sales Monitoring:</strong> Month-level granularity for identifying which periods drive or drag performance</li>
+                    <li><strong>Average Price Analysis:</strong> YOY growth in average transaction value — revealing whether growth comes from volume or premium positioning</li>
+                    <li><strong>Cars Sold Metrics:</strong> Unit economics separated from revenue to distinguish pricing power from market demand</li>
+                </ul>
+
+                <h2>Key Findings</h2>
+                <ul>
+                    <li><strong>Body Style Impact:</strong> SUVs and sedans dominated revenue but hatchbacks showed highest YOY growth rate — a leading indicator of shifting consumer preference</li>
+                    <li><strong>Regional Variation:</strong> Some dealer regions showed strong unit growth but declining average price, indicating aggressive discounting that may erode margins</li>
+                    <li><strong>Color as Signal:</strong> Premium colors (metallic, pearl) correlated with higher transaction values independent of vehicle class — a low-cost upsell opportunity</li>
+                    <li><strong>Pricing Strategy Split:</strong> High-volume dealers outperformed in 3/5 regions; premium-positioned dealers dominated in high-income urban areas</li>
+                </ul>
+
+                <h2>Dashboard Architecture</h2>
+                <p>Two complementary views designed for different user needs:</p>
+                <ul>
+                    <li><strong>Overview Dashboard:</strong> Executive-level KPI cards, YTD weekly trend lines, sales by body style/color/region — answers "how are we doing?" in 10 seconds</li>
+                    <li><strong>Details Grid:</strong> Granular transaction-level data with filtering — answers "why?" when executives drill deeper</li>
+                </ul>
+
+                <h2>Methodology</h2>
+                <ol>
+                    <li>Data verification for missing values and anomalies (resolved inconsistencies in date formats and dealer codes)</li>
+                    <li>Ensured data consistency across types, formats, and categorical values</li>
+                    <li>Built star-schema data model in Power BI for optimal query performance</li>
+                    <li>Created DAX measures for YOY comparison, running averages, and conditional formatting</li>
+                </ol>
+
+                <div class="article__cta">
+                    <a href="https://github.com/gorgeousgangster/Car-Sales-analysis-Overview-Details" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tmpl-ai-market">
+        <div class="article">
+            <div class="article__header">
+                <span class="article__tag">Market Research</span>
+                <h1>AI Hiring Beyond Tech: Where the Market is Actually Growing</h1>
+                <p class="article__meta">Global AI Job Market & Salary Trends &bull; Power BI &bull; 2025</p>
+            </div>
+            <div class="article__body">
+                <h2>Overview</h2>
+                <p>Analyzed a real-world dataset of ~15,000 AI/ML job postings to answer the questions that job seekers and hiring managers actually care about: where is demand growing, which skills pay the most, and does remote work affect compensation?</p>
+
+                <div class="article__metrics">
+                    <div class="article__metric"><strong>~15K</strong><span>Job Records</span></div>
+                    <div class="article__metric"><strong>Global</strong><span>Coverage</span></div>
+                    <div class="article__metric"><strong>3</strong><span>Dashboards</span></div>
+                    <div class="article__metric"><strong>5+</strong><span>Dimensions</span></div>
+                </div>
+
+                <h2>Research Questions Explored</h2>
+                <ul>
+                    <li><strong>Market Growth:</strong> Is the AI job market expanding or contracting? Which regions lead demand?</li>
+                    <li><strong>Remote Work Dominance:</strong> How prevalent is remote? Which roles offer the most flexibility? Does remote compress salary bands?</li>
+                    <li><strong>Skills ROI:</strong> Programming vs. Cloud vs. ML skills — which combination yields the highest salary premium?</li>
+                    <li><strong>Company Size Effect:</strong> Do startups or enterprises hire more AI talent? How does company size affect remote availability?</li>
+                    <li><strong>Cross-Industry Adoption:</strong> Is AI demand concentrated in tech, or spreading into Retail, Media, Healthcare, and Automotive?</li>
+                    <li><strong>Experience Premium:</strong> Entry-level vs. senior compensation gap — what's the real salary growth trajectory?</li>
+                </ul>
+
+                <h2>Key Findings</h2>
+                <ul>
+                    <li><strong>AI is no longer tech-only:</strong> Retail, Automotive, and Media sectors show fastest growth rate in AI hiring, driven by practical applications (recommendation engines, autonomous systems, content personalization)</li>
+                    <li><strong>Remote creates arbitrage:</strong> Remote-first roles have compressed salary bands geographically, creating opportunities for talent in lower cost-of-living areas</li>
+                    <li><strong>Domain + ML > Pure ML:</strong> Professionals combining domain expertise with ML fundamentals command higher salaries than pure ML engineers in many verticals</li>
+                    <li><strong>Company size matters differently:</strong> Large enterprises offer more remote AI roles; startups pay less but offer faster career progression</li>
+                    <li><strong>Skills demand hierarchy:</strong> Python/ML remain table stakes, but Cloud skills (AWS/GCP) increasingly differentiate candidates at senior levels</li>
+                </ul>
+
+                <h2>Dashboard Structure</h2>
+                <ul>
+                    <li><strong>Overview Dashboard:</strong> High-level market health — total postings, salary distributions, geographic heatmap, trend lines</li>
+                    <li><strong>Company Analysis:</strong> Hiring patterns by company size, industry breakdown, organizational trends</li>
+                    <li><strong>Recruitment Needs:</strong> Skills demand matrix, experience distribution, role-specific requirements</li>
+                </ul>
+
+                <h2>Methodology</h2>
+                <ol>
+                    <li>Data cleaning: standardized job titles, salary formats (hourly/annual/currency), and skill taxonomies</li>
+                    <li>Multi-dimensional modeling across geography, company size, job type, skills, and industry</li>
+                    <li>Built interactive Power BI dashboards with cross-filtering for personalized exploration</li>
+                </ol>
+
+                <div class="article__cta">
+                    <a href="https://github.com/gorgeousgangster/Global-AI-Job-Market-Salary-Trends-2025" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tmpl-fraud">
+        <div class="article">
+            <div class="article__header">
+                <span class="article__tag">Machine Learning</span>
+                <h1>Why 99.8% Accuracy Means Nothing in Fraud Detection</h1>
+                <p class="article__meta">Credit Card Fraud Detection &bull; Python / scikit-learn &bull; 2023</p>
+            </div>
+            <div class="article__body">
+                <h2>The Accuracy Trap</h2>
+                <p>Imagine a dataset where 99.83% of transactions are legitimate. A model that always predicts "not fraud" achieves 99.83% accuracy — and catches exactly zero fraudsters. This is the fundamental problem with imbalanced classification, and it's why standard metrics fail catastrophically in fraud detection.</p>
+
+                <div class="article__metrics">
+                    <div class="article__metric"><strong>0.17%</strong><span>Fraud Rate</span></div>
+                    <div class="article__metric"><strong>284K+</strong><span>Transactions</span></div>
+                    <div class="article__metric"><strong>94%</strong><span>Precision</span></div>
+                    <div class="article__metric"><strong>87%</strong><span>Recall</span></div>
+                </div>
+
+                <h2>How SMOTE Changes the Game</h2>
+                <p>SMOTE (Synthetic Minority Over-sampling Technique) generates synthetic fraud examples by interpolating between existing fraud cases in feature space. This doesn't just duplicate rare examples — it creates plausible new fraud patterns that help the model learn the decision boundary more effectively.</p>
+                <p>The key insight: SMOTE should only be applied to training data, never to validation/test sets. Leaking synthetic samples into evaluation gives artificially optimistic metrics.</p>
+
+                <h2>The Ensemble Approach</h2>
+                <ul>
+                    <li><strong>Isolation Forest:</strong> Unsupervised anomaly detection as a first-pass filter — catches transactions that are statistically unusual regardless of label</li>
+                    <li><strong>Logistic Regression:</strong> Provides interpretable coefficients — critical for explaining to stakeholders why a transaction was flagged</li>
+                    <li><strong>Random Forest:</strong> Captures non-linear interactions between features (time-of-day × amount × merchant category)</li>
+                    <li><strong>Gradient Boosting:</strong> Iteratively corrects errors from previous models, specializing in hard-to-classify borderline cases</li>
+                </ul>
+                <p>Combining these via soft voting produced more robust predictions than any single model — each compensates for the others' blind spots.</p>
+
+                <h2>Threshold as a Business Decision</h2>
+                <p>The model outputs a probability (0 to 1). Where you draw the line between "flag" and "pass" is not a data science decision — it's a business decision:</p>
+                <ul>
+                    <li><strong>Low threshold (0.3):</strong> Catches more fraud (high recall) but annoys more legitimate customers (lower precision)</li>
+                    <li><strong>High threshold (0.7):</strong> Only flags clear fraud (high precision) but misses subtle patterns (lower recall)</li>
+                    <li><strong>Optimal threshold:</strong> Depends on the cost ratio — how much does one missed fraud cost vs. one false alarm?</li>
+                </ul>
+
+                <h2>Temporal Patterns Discovered</h2>
+                <p>Fraud doesn't happen uniformly. The analysis revealed distinct time-based patterns: fraud rates spike during off-hours when monitoring is lighter, and fraudulent transactions cluster at specific amount ranges designed to avoid automated velocity checks.</p>
+
+                <div class="article__cta">
+                    <a href="https://drive.google.com/drive/folders/1ep58Mc5z67IuFTOqbhur6Ng8Ptf7BD7E?usp=sharing" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-google-drive"></i> View Project Files
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Resume Section -->
+    <section class="resume" id="resume">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag" data-i18n="resume.tag">06 / Resume</span>
+                <h2 class="section-header__title" data-i18n="resume.title" data-i18n-html="1">Interactive <em>CV</em></h2>
+            </div>
+            <div class="resume__layout">
+                <div class="resume__preview">
+                    <div class="resume__paper">
+                        <div class="resume__paper-header">
+                            <h3>Vo Duc Manh</h3>
+                            <p>Data Analyst & AI Enthusiast</p>
+                        </div>
+                        <div class="resume__paper-section">
+                            <h4>Education</h4>
+                            <div class="resume__entry">
+                                <span class="resume__entry-title">Foreign Trade University</span>
+                                <span class="resume__entry-date">2024 - Present</span>
+                                <p>International Economics</p>
+                            </div>
+                            <div class="resume__entry">
+                                <span class="resume__entry-title">Vinh Gifted High School</span>
+                                <span class="resume__entry-date">2021 - 2024</span>
+                                <p>Computer Science | GPA 9.3/10</p>
+                            </div>
+                        </div>
+                        <div class="resume__paper-section">
+                            <h4>Certifications</h4>
+                            <div class="resume__badges">
+                                <span class="resume__badge">WorldQuant</span>
+                                <span class="resume__badge">MindX BI</span>
+                                <span class="resume__badge">MindX ML</span>
+                                <span class="resume__badge">IELTS 7.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="resume__download">
+                    <div class="resume__stats">
+                        <div class="resume__stat">
+                            <span class="resume__stat-number" data-count="5">0</span>
+                            <span class="resume__stat-label">Certifications</span>
+                        </div>
+                        <div class="resume__stat">
+                            <span class="resume__stat-number" data-count="3">0</span>
+                            <span class="resume__stat-label">Projects</span>
+                        </div>
+                        <div class="resume__stat">
+                            <span class="resume__stat-number" data-count="8">0</span>
+                            <span class="resume__stat-label">Technologies</span>
+                        </div>
+                    </div>
+                    <a href="./assets/MyCV_Eng.pdf" download class="resume__btn">
+                        <i class="fas fa-download"></i>
+                        <span>Download Full CV (PDF)</span>
+                    </a>
+                    <p class="resume__note">Last updated: May 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-header__tag" data-i18n="contact.tag">07 / Contact</span>
+                <h2 class="section-header__title" data-i18n="contact.title" data-i18n-html="1">Let's build<br>something <em>together</em></h2>
+            </div>
+            <div class="contact__layout">
+                <div class="contact__info">
+                    <p class="contact__text">
+                        I'm currently open to internship opportunities, freelance projects, and
+                        collaborations in data analytics and machine learning. Let's talk.
+                    </p>
+                    <div class="contact__channels">
+                        <a href="mailto:vomanh6a@gmail.com" class="contact__channel">
+                            <div class="contact__channel-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact__channel-info">
+                                <span class="contact__channel-label">Email</span>
+                                <span class="contact__channel-value">vomanh6a@gmail.com</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact__channel-arrow"></i>
+                        </a>
+                        <a href="tel:+84973489446" class="contact__channel">
+                            <div class="contact__channel-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact__channel-info">
+                                <span class="contact__channel-label">Phone</span>
+                                <span class="contact__channel-value">(+84) 973 489 446</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact__channel-arrow"></i>
+                        </a>
+                        <a href="https://github.com/gorgeousgangster" target="_blank" class="contact__channel">
+                            <div class="contact__channel-icon"><i class="fab fa-github"></i></div>
+                            <div class="contact__channel-info">
+                                <span class="contact__channel-label">GitHub</span>
+                                <span class="contact__channel-value">gorgeousgangster</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact__channel-arrow"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/v%C3%B5-m%E1%BA%A1nh-981369360/" target="_blank" class="contact__channel">
+                            <div class="contact__channel-icon"><i class="fab fa-linkedin"></i></div>
+                            <div class="contact__channel-info">
+                                <span class="contact__channel-label">LinkedIn</span>
+                                <span class="contact__channel-value">Connect with me</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact__channel-arrow"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_098.majnh/" target="_blank" class="contact__channel">
+                            <div class="contact__channel-icon"><i class="fab fa-instagram"></i></div>
+                            <div class="contact__channel-info">
+                                <span class="contact__channel-label">Instagram</span>
+                                <span class="contact__channel-value">@_098.majnh</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact__channel-arrow"></i>
+                        </a>
+                        <a href="https://www.facebook.com/v0.cong.tu/" target="_blank" class="contact__channel">
+                            <div class="contact__channel-icon"><i class="fab fa-facebook"></i></div>
+                            <div class="contact__channel-info">
+                                <span class="contact__channel-label">Facebook</span>
+                                <span class="contact__channel-value">Vo Duc Manh</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact__channel-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact__form-wrapper">
+                    <form class="contact__form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" required placeholder=" ">
+                            <label for="name">Your name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" required placeholder=" ">
+                            <label for="email">Your email</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="4" required placeholder=" "></textarea>
+                            <label for="message">Your message</label>
+                        </div>
+                        <button type="submit" class="contact__submit">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <span class="footer__logo">{Vo Duc Manh}</span>
+                    <p>Turning data into decisions.</p>
+                </div>
+                <div class="footer__links">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer__copy">
+                    <p>&copy; 2025 Vo Duc Manh. Crafted with data & intention.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Menu -->
+    <div class="fab-menu" id="fabMenu">
+        <a href="mailto:vomanh6a@gmail.com" class="fab-menu__btn" data-tooltip="Email me" style="background:var(--bg-3);">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://github.com/gorgeousgangster" target="_blank" class="fab-menu__btn" data-tooltip="GitHub" style="background:var(--bg-3);">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/v%C3%B5-m%E1%BA%A1nh-981369360/" target="_blank" class="fab-menu__btn" data-tooltip="LinkedIn" style="background:var(--bg-3);">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/_098.majnh/" target="_blank" class="fab-menu__btn" data-tooltip="Instagram" style="background:var(--bg-3);">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/v0.cong.tu/" target="_blank" class="fab-menu__btn" data-tooltip="Facebook" style="background:var(--bg-3);">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <button class="fab-menu__trigger" id="fabTrigger" aria-label="Quick actions">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle toast__icon"></i>
+        <span id="toastMsg">Action completed</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
